@@ -6,7 +6,7 @@
  * @author		Chris Boulton <chris@bigcommerce.com>
  * @license		http://www.opensource.org/licenses/mit-license.php
  */
-class Resque_Log extends Psr\Log\AbstractLogger 
+class Resque_Log extends Symfony\Component\HttpKernel\Log\AbstractLogger 
 {
 	public $verbose;
 
@@ -32,7 +32,7 @@ class Resque_Log extends Psr\Log\AbstractLogger
 			return;
 		}
 
-		if (!($level === Psr\Log\LogLevel::INFO || $level === Psr\Log\LogLevel::DEBUG)) {
+		if (!($level === Symfony\Component\HttpKernel\Log\LogLevel::INFO || $level === Symfony\Component\HttpKernel\Log\LogLevel::DEBUG)) {
 			fwrite(
 				STDOUT,
 				'[' . $level . '] ' . $this->interpolate($message, $context) . PHP_EOL
